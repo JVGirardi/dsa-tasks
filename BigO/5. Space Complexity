@@ -1,0 +1,25 @@
+
+Additional space --> we dont' include space taken up by the input
+
+we don't have control of what is outside the function, only inside.
+
+public static void scare(int times) {
+    for (int i = 0; i < times; i++) {
+        sout("BOOOOO");
+    }
+}
+
+scare(5) --> space complexity = O(1); --> only one variable "i"
+
+public ArrayList<int> void testing(int times) {
+    ArrayList<int> array = new ArrayList<>();
+
+    for (int i = 0; i < times; i++) {
+        array.add(i);
+    }
+    return array;
+}
+
+testing(5) --> O(n)
+
+

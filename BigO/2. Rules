@@ -1,0 +1,32 @@
+Rule Book
+
+Rule 1: Worst Case
+    We always search for the worst case into the function.
+
+Rule 2: Remove Constants
+    Ignore any constant numbers or multipliers.
+    If an algorithm takes O(2n), O(500n), or O(n/2) time tom run, drop the constants and simply call it O(n).
+
+Rule 3: Different terms for inputs
+    Ex 1: Function(input1, input2)
+    for (.. input : input1)...
+    for (.. input : input2)...
+    O(a + b)
+    for (.. input : input1)...
+        for (.. input : input2)...
+    O(a * b)
+
+    Ex 2: Function(input3)
+    for (.. input : input3 ..)
+    for (.. input : input3 ..)
+    O(2n) = O(n)
+    for (.. input : input3 ..)
+        for (.. input : input3 ..)
+    O(n * n) = O(n^2)
+
+Rule 4: Drop non dominants
+    n= 5
+    n = 500
+    O(n^2+3x+41+n/2)
+    O(n^2)
+

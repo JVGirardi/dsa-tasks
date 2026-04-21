@@ -1,0 +1,14 @@
+The pilars of programming:
+
+1. Readable
+2. Speed (Time Complexity) --> Scalability
+3. Memory (Space Complexity)
+
+If you want more speed you will have to sacrify memory
+If you want more memory you will have to sacrify speed
+
+When a program executes it has two ways to remember things:
+
+1. Heap --> where we store variables that we assign
+2. Steak --> where we keep track of our functional calls
+
