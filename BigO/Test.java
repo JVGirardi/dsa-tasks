@@ -3,18 +3,18 @@ import java.util.Arrays;
 
 public class Test {
     public static void main(String[] args) {
-        //Log all pairs of array
         int[] boxes = {1,2,3,4,5};
-        ArrayList<Integer[]> array = new ArrayList<>();
+        int target = 5;
 
-        for(int i= 0; i < boxes.length; i++) {
-            for(int j= 0; j <boxes.length; j++) {
-                array.add(new Integer[]{boxes[i], boxes[j]});
+        for (int i = 0; i < boxes.length; i++) {
+            for (int j = i + 1; j < boxes.length; j++) {
+                if (boxes[i] + boxes[j] == target) {
+                    System.out.println(i + " " + j);
+                }
             }
         }
 
-        for (Integer[] a : array) {
-            System.out.println(Arrays.toString(a));
-        }
+
+
     }
 }

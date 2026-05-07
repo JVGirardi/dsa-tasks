@@ -1,0 +1,29 @@
+HashTables is a data structure that stores unique keys to values ex.<Integer, String>
+Each key/value pair is kwown as an Entry
+Fast insertion, look up, deletion of key/value pairs
+Not ideal for small data sets, great with large data sets
+
+
+Hash Collision --> when the % of a hashCode key is the same number of another
+
+hashing = takes a key and computes an integer (formula will vary based on key & data type)
+In a Hashtable, we use hash % capacity to calculate an index number
+
+key.hashCode() % capacity = index
+
+We can call some values in the same index as a "Bucket" this bucket it's like a linked list an entry points
+to another ( linear search O(n) )
+
+bucket = an indexed storage location for one or more Entries.
+can store multiple Entries in case of a collision (linked similarly a LinkedList)
+
+collision = hash function generates the same index for more than one key
+            less collisions = more efficiency
+
+To reduce the collisions you can grow the hashTable, but it will increase the memory that it has.
+--> Load factor --> common 0.75 --> when the hashTable length reachs 75% it will increase,
+usually the capacity will duplicate.
+
+Runtime complexity: Best case O(1)
+                    Worst case O(n)
+                    

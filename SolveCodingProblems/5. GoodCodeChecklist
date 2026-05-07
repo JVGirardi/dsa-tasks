@@ -1,0 +1,9 @@
+[✅]It works
+[✅]Good use of data structures
+[✅]Code Re-use/ Do Not Repeat Yourself
+[✅]Modular - makes code more readable, maintainable and testable
+[✅]Less than O(N^2). We want to avoid nested loops if we can since they are expensive. Two
+separate loops are better than 2 nested loops
+[✅]Low Space Complexity --> Recursion can cause stack overflow, copying of large arrays may
+exceed memory of machine
+
