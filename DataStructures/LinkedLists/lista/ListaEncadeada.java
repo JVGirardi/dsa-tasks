@@ -5,8 +5,10 @@ public class ListaEncadeada<T> {
     private No<T> inicio;
     private No<T> ultimo;
     private int tamanho = 0;
-
-    private final int NAO_ENCONTRADO = -1;
+    private final String INVALID_POSITION = "Invalid position";
+    private final String POSITION_NOT_FOUND = "Position not Found";
+    private final String EMPTY_LIST = "The list is empty";
+    private final int NOT_FOUNDED = -1;
 
     public void adiciona(T elemento) {
         No<T> no = new No<T>(elemento);
@@ -19,12 +21,58 @@ public class ListaEncadeada<T> {
         this.tamanho++;
     }
 
+    public void adicionaInicio(T elemento) {
+        No<T> novoNo = new No<>(elemento);
+        if (this.tamanho == 0) {
+            this.inicio = novoNo;
+            this.ultimo = novoNo;
+        } else {
+            novoNo.setProximo(this.inicio);
+            this.inicio = novoNo;
+        }
+        this.tamanho++;
+    }
+
+    public void adiciona(T elemento, int posicao) {
+        if (posicaoNaoValida(posicao)) {
+            throw new IllegalArgumentException(INVALID_POSITION);
+        }
+
+        if (posicao == 0) {
+            adicionaInicio(elemento);
+        } else if (posicao == tamanho){
+            adiciona(elemento);
+        } else {
+            No<T> noAnterior = buscaPorNo(posicao-1);
+            No<T> proximoNo = noAnterior.getProximo();
+            No<T> novoNo = new No<>(elemento);
+            novoNo.setProximo(proximoNo);
+            noAnterior.setProximo(novoNo);
+            tamanho++;
+        }
+    }
+
+    public T removeInicio() {
+        if (this.tamanho <= 0) {
+            throw new RuntimeException(EMPTY_LIST);
+        }
+
+        No<T> remover = this.inicio;
+        this.inicio = remover.getProximo();
+        this.tamanho--;
+        if (this.tamanho == 0) {
+            this.ultimo = null;
+//            this.inicio = null; --> nao eh necessario, ja vai estar apontando para null
+        }
+
+        return remover.getElemento();
+    }
+
     public int getTamanho() {
         return tamanho;
     }
 
     public void limpaLista() {
-
         for (No<T> atual = this.inicio; atual != null;) {
             No<T> proximo = atual.getProximo();
             atual.setElemento(null);
@@ -38,16 +86,18 @@ public class ListaEncadeada<T> {
     }
 
     private No<T> buscaPorNo(int posicao) {
-        if (posicao > tamanho || posicao < 0) {
-            throw new IllegalArgumentException("Position not Found.");
+        if (posicaoNaoValida(posicao)) {
+            throw new IllegalArgumentException(POSITION_NOT_FOUND);
         }
         No<T> atual = this.inicio;
-        int i=0;
-        while (i < posicao) {
+        for (int i = 0; i < posicao; i++) {
             atual = atual.getProximo();
-            i++;
         }
         return atual;
+    }
+
+    private boolean posicaoNaoValida(int posicao) {
+        return posicao > this.tamanho || posicao < 0;
     }
 
     public T buscaPorPosicao(int posicao) {
@@ -62,7 +112,7 @@ public class ListaEncadeada<T> {
             atual = atual.getProximo();
             pos++;
         }
-        return NAO_ENCONTRADO;
+        return NOT_FOUNDED;
     }
 
     @Override
