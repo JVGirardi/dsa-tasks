@@ -1,10 +1,13 @@
 package LinkedLists.lista;
 
+import java.util.Comparator;
+
 public class ListaEncadeada<T> {
 
     private No<T> inicio;
     private No<T> ultimo;
     private int tamanho = 0;
+
     private final String INVALID_POSITION = "Invalid position";
     private final String POSITION_NOT_FOUND = "Position not Found";
     private final String EMPTY_LIST = "The list is empty";
@@ -48,7 +51,7 @@ public class ListaEncadeada<T> {
             No<T> novoNo = new No<>(elemento);
             novoNo.setProximo(proximoNo);
             noAnterior.setProximo(novoNo);
-            tamanho++;
+            this.tamanho++;
         }
     }
 
@@ -66,6 +69,43 @@ public class ListaEncadeada<T> {
         }
 
         return remover.getElemento();
+    }
+
+    public T removeFinal() {
+        if (this.tamanho <= 0) {
+            throw new RuntimeException(EMPTY_LIST);
+        }
+        if (this.tamanho == 1) {
+            return removeInicio();
+        }
+
+        No<T> penultimoNo = buscaPorNo(this.tamanho-2);
+        T elementoRemovido = penultimoNo.getProximo().getElemento();
+        penultimoNo.setProximo(null);
+        this.ultimo = penultimoNo;
+        tamanho--;
+        return elementoRemovido;
+    }
+
+    public T remove(int pos) {
+        if (posicaoNaoValida(pos)) {
+            throw new IllegalArgumentException(INVALID_POSITION);
+        }
+        if (pos == 0) {
+            return removeInicio();
+        }
+        if (pos == this.tamanho-1) {
+            return removeFinal();
+        }
+
+        No<T> noAnterior = buscaPorNo(pos-1);
+        No<T> noRemovido = noAnterior.getProximo();
+        No<T> proximo = noRemovido.getProximo();
+        noAnterior.setProximo(proximo);
+        noRemovido.setProximo(null);
+        this.tamanho--;
+        return noRemovido.getElemento();
+
     }
 
     public int getTamanho() {
@@ -97,7 +137,7 @@ public class ListaEncadeada<T> {
     }
 
     private boolean posicaoNaoValida(int posicao) {
-        return posicao > this.tamanho || posicao < 0;
+        return posicao >= this.tamanho || posicao < 0;
     }
 
     public T buscaPorPosicao(int posicao) {
@@ -113,6 +153,38 @@ public class ListaEncadeada<T> {
             pos++;
         }
         return NOT_FOUNDED;
+    }
+
+    public void adicionaOrdenado(T elemento, Comparator<T> comparator) {
+        if (this.tamanho == 0) {
+            adicionaInicio(elemento);
+        } else if (comparator.compare(this.inicio.getElemento(), elemento) >= 0) {
+            adicionaInicio(elemento);
+        } else if (comparator.compare(this.ultimo.getElemento(), elemento) <= 0) {
+            adiciona(elemento);
+        } else {
+            No<T> atual = this.inicio;
+            while (atual.getProximo() != null && comparator.compare(atual.getProximo().getElemento(), elemento) < 0) { //while 1st>=2nd
+                atual = atual.getProximo();
+            }
+            No<T> celula = new No<T>(elemento, atual.getProximo());
+            atual.setProximo(celula);
+            tamanho++;
+
+        }
+    }
+
+    public void inverterLista() {
+        No<T> atual = this.inicio;
+        No<T> anterior = null;
+        No<T> proximo = null;
+        while (atual != null) {
+            proximo = atual.getProximo();
+            atual.setProximo(anterior);
+
+            anterior = atual;
+            atual = proximo;
+        }
     }
 
     @Override
