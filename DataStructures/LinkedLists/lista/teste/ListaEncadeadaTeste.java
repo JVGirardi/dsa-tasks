@@ -2,12 +2,79 @@ package LinkedLists.lista.teste;
 
 import LinkedLists.lista.ListaEncadeada;
 
+import java.util.Comparator;
+
 public class ListaEncadeadaTeste {
     static void main() {
 //        testesIniciais();
 //        adicionaNoInicio();
 //        adicionaPorPosicao();
-        removeDoInicio();
+//        removeDoInicio();
+//        removeDoFinal();
+//        removePosicao();
+        insereOrdenado();
+    }
+
+    private static void insereOrdenado() {
+        ListaEncadeada<Integer> lista = new ListaEncadeada<>();
+
+        Comparator<Integer> crescente = Integer::compareTo;
+        Comparator<Integer> decrescente = (s1, s2) -> s2.compareTo(s1);
+
+        lista.adicionaOrdenado(5, decrescente);
+        System.out.println(lista);
+        lista.adicionaOrdenado(1, decrescente);
+        System.out.println(lista);
+        lista.adicionaOrdenado(4, decrescente);
+        System.out.println(lista);
+        lista.adicionaOrdenado(2, decrescente);
+        System.out.println(lista);
+        lista.adicionaOrdenado(3, decrescente);
+        System.out.println(lista);
+        lista.adicionaOrdenado(6, decrescente);
+        System.out.println(lista);
+        lista.adicionaOrdenado(5, decrescente);
+        System.out.println(lista);
+    }
+
+
+    private static void removePosicao() {
+        ListaEncadeada<Integer> lista = new ListaEncadeada<>();
+
+        lista.adiciona(1);
+        lista.adiciona(2);
+        lista.adiciona(3);
+        lista.adiciona(4);
+        System.out.println("Lista: " + lista);
+
+        System.out.println("Elemento removido: " + lista.remove(2));
+        System.out.println("Lista: " + lista);
+
+        System.out.println("Elemento removido: " + lista.remove(0));
+        System.out.println("Lista: " + lista);
+
+        System.out.println("Elemento removido: " + lista.remove(1));
+        System.out.println("Lista: " + lista);
+
+
+    }
+
+    public static void removeDoFinal() {
+        ListaEncadeada<Integer> lista = new ListaEncadeada<>();
+
+        lista.adiciona(1);
+        lista.adiciona(2);
+        lista.adiciona(3);
+        System.out.println("Lista: " + lista);
+
+        System.out.println("Elemento removido: " + lista.removeFinal());
+        System.out.println("Lista: " + lista);
+
+        System.out.println("Elemento removido: " + lista.removeFinal());
+        System.out.println("Lista: " + lista);
+
+        System.out.println("Elemento removido: " + lista.removeFinal());
+        System.out.println("Lista: " + lista);
     }
 
 
