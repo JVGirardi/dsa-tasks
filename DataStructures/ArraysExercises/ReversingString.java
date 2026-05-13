@@ -1,4 +1,4 @@
-package Arrays;
+package ArraysExercises;
 
 public class ReversingString {
     static void main() {
