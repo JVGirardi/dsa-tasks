@@ -1,4 +1,4 @@
-package Arrays;
+package ArraysExercises;
 
 public class LongestWord {
 //    Have the function LongestWord(sen) take the sen parameter being passed and

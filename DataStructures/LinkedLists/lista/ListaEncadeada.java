@@ -175,16 +175,30 @@ public class ListaEncadeada<T> {
     }
 
     public void inverterLista() {
-        No<T> atual = this.inicio;
         No<T> anterior = null;
+        No<T> atual = this.inicio;
         No<T> proximo = null;
-        while (atual != null) {
-            proximo = atual.getProximo();
-            atual.setProximo(anterior);
+       while (atual != null) {
+           proximo = atual.getProximo();
+           atual.setProximo(anterior);
 
-            anterior = atual;
-            atual = proximo;
+           anterior = atual;
+           atual = proximo;
+       }
+       this.inicio = anterior;
+    }
+
+    public Object[] converterParaArray() {
+        if (this.tamanho == 0) {
+            return (T[]) new Object[0];
         }
+        Object[] vetor = new Object[this.tamanho];
+        No<T> atual = this.inicio;
+        for (int i = 0; i < vetor.length; i++) {
+            vetor[i] = atual.getElemento();
+            atual = atual.getProximo();
+        }
+        return vetor;
     }
 
     @Override

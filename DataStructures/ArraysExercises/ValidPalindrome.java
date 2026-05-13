@@ -1,7 +1,4 @@
-package Arrays;
-
-import java.util.Locale;
-import java.util.Objects;
+package ArraysExercises;
 
 public class ValidPalindrome {
     // A phrase is a palindrome if, after converting all uppercase letters into lowercase

@@ -1,9 +1,6 @@
-package Arrays;
+package ArraysExercises;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
-
-import static java.util.Collections.swap;
 
 public class MoveZeros {
     static void main() {

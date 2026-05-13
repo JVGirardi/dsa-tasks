@@ -1,4 +1,4 @@
-package Arrays;
+package ArraysExercises;
 
 public class MyArray {
     private int[] array;

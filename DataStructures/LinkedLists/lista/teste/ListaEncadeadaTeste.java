@@ -2,6 +2,7 @@ package LinkedLists.lista.teste;
 
 import LinkedLists.lista.ListaEncadeada;
 
+import java.util.Arrays;
 import java.util.Comparator;
 
 public class ListaEncadeadaTeste {
@@ -12,7 +13,19 @@ public class ListaEncadeadaTeste {
 //        removeDoInicio();
 //        removeDoFinal();
 //        removePosicao();
-        insereOrdenado();
+//        insereOrdenado();
+        converterParaArray();
+    }
+
+    private static void converterParaArray() {
+        ListaEncadeada<Integer> lista = new ListaEncadeada<>();
+        for (int i= 0; i < 10; i++) {
+            lista.adiciona(i);
+        }
+
+        Object[] array = lista.converterParaArray();
+        System.out.println(Arrays.toString(array));
+
     }
 
     private static void insereOrdenado() {

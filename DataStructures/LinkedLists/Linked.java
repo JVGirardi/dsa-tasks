@@ -57,7 +57,5 @@ public class Linked {
         String last = linkedLikeQueue.removeLast();
 
         System.out.println(linkedLikeQueue);
-
-
     }
 }
