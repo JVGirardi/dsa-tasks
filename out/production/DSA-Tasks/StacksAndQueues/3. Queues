@@ -1,0 +1,25 @@
+Queues:
+
+FIFO = First In First Out
+like a "line" the first person who arrives it's the first to leave
+It's the opposite of a stack
+
+The first item in a queue gets accessed first and gets first out
+
+For example, if you had any sort of waitlist app to perhaps buy tickts
+for a concert that uses queues
+
+Like uber to get a ride
+
+the person who requested the ride first will be priorityzed
+First in First Out
+
+A printer --> 3 people waiting to print something
+
+The queue of the printer to print will be using a Queue
+
+methdos:
+
+enqueue --> like push --> add to the queue
+dequeue --> like pop --> remove --> but in queues the person removed it is the first in, different from stacks.
+peek --> the first item that will come out --> the first that arrived
