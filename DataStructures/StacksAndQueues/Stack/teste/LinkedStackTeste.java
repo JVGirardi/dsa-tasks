@@ -1,14 +1,14 @@
 package StacksAndQueues.Stack.teste;
 
-import StacksAndQueues.Stack.ListaStack;
+import StacksAndQueues.Stack.LinkedStack;
 
-public class PilhaTeste {
+public class LinkedStackTeste {
     static void main() {
         testePush();
     }
 
     private static void testePush() {
-        ListaStack<Integer> lista = new ListaStack<>();
+        LinkedStack<Integer> lista = new LinkedStack<>();
         System.out.println(lista);
         System.out.println("Elemento add: "+ lista.push(1));
         System.out.println(lista);

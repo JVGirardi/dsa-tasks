@@ -1,4 +1,4 @@
-package StacksAndQueues.Stack;
+package StacksAndQueues;
 
 public class Node<T> {
     private T element;
