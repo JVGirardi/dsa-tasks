@@ -1,8 +1,8 @@
 package StacksAndQueues.Stack;
 
-import java.util.Stack;
+import StacksAndQueues.Node;
 
-public class ListaStack<T> {
+public class LinkedStack<T> {
     private Node<T> top;
     private Node<T> bottom;
     private int size;
