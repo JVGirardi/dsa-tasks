@@ -18,9 +18,11 @@ public class LinkedQueue<T> {
 
     public T enqueue(T value) {
         Node<T> novoNo = new Node<>(value);
-        novoNo.setNext(this.first);
-        this.first = novoNo;
         if (isEmpty()) {
+            this.first = novoNo;
+            this.last = novoNo;
+        } else {
+            this.last.setNext(novoNo);
             this.last = novoNo;
         }
         size++;
