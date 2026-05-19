@@ -1,38 +1,63 @@
 package HashTables.HashTable;
 
-import java.util.ArrayList;
 
 public class MyHashTable <K, V> {
-    private ArrayList<HashNode<K, V>> buckets;
-    private int capacity;
-    private int length;
+    private HashNode<K, V>[] items;
+    private int quantidade;
+    private int capacidade;
+
+    public MyHashTable(int capacidade) {
+        items = (HashNode<K, V>[]) new HashNode[capacidade];
+        this.capacidade = capacidade;
+    }
 
     public MyHashTable() {
-        this.capacity = 10;
-        this.length = 0;
-        this.buckets = new ArrayList<>(capacity);
-
-        for (int i = 0; i< capacity; i++) {
-            buckets.add(null);
-        }
+        this(10);
     }
 
-    public void put(K key, V value) {
-        int index = getIndex(key);
-        HashNode<K, V> listBegin = buckets.get(index);
-
-        HashNode<K, V> current = listBegin;
-        while (current != null) {
-            if (current.getKey().equals(key)) {
-
+    public void adicionar(K key, V value) {
+        if (isNecessarioAumentarCapacidade()) {
+            aumentar();
+        }
+        HashNode<K, V> newHashNode = new HashNode<>(key, value);
+        HashNode<K, V> currentHashNode = items[getPosicaoDeAdicao(key)];
+        if (currentHashNode == null) {
+            currentHashNode = newHashNode;
+        } else {
+            while (currentHashNode.getNext() != null) {
+                currentHashNode = currentHashNode.getNext();
             }
+            currentHashNode.setNext(newHashNode);
         }
 
+
     }
 
-    private int getIndex(K key) {
-        int hashCode = key.hashCode();
-        return Math.abs(hashCode % capacity);
+    private boolean isNecessarioAumentarCapacidade() {
+        return this.quantidade >= Math.abs(capacidade*0.75);
     }
+
+    private void aumentar() {
+        int novaCapacidade = this.capacidade*2;
+        if (novaCapacidade == 0) {
+            novaCapacidade = 1;
+        }
+
+        HashNode<K, V>[] novaHashList = new HashNode[novaCapacidade];
+        for (int i = 0; i < quantidade; i++) {
+            novaHashList[i] = items[i];
+        }
+        this.items = novaHashList;
+    }
+
+    private int getPosicaoDeAdicao(K key) {
+        return Math.abs((hashCode(key)%capacidade));
+    }
+
+    private int hashCode(K key) {
+        return key.hashCode();
+    }
+
+
 
 }
