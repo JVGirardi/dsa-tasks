@@ -1,0 +1,16 @@
+A type of tree with a few rules
+
+Binary tree:
+Each node can have either zero, one or two nodes and each child can only have one parent
+
+Level 0: 2^0 = 1 (1 node)
+Level 1: 2^1 = 2 (2 nodes)
+Level 2: 2^2 = 4 (4 nodes)
+Level 3: 2^3 = 8 (8 nodes)
+
+number of nodes = 2^h (height) -1; --> O numero de nodes total contando os nodes acima e no mesmo nível
+log nodes = height
+
+log 100 = 2 (because 10^2 = 100)
+
+
