@@ -1,0 +1,15 @@
+Good at searching
+
+Great for comparing things
+
+This ds preserves relationships
+
+Rule 1:
+    All the child nodes in the tree to the right of the root must be greater than the current node
+    To the left always decreases
+
+Rule 2:
+    A node can only have up to two children (because it's a binary tree)
+    Lookup O(log N)
+    insert O(log N)
+    delete O(log N)
