@@ -1,0 +1,12 @@
+Trees are a data structure that has a hierarchical structure,
+as opposed to something like linkedLists or arrays which are linear.
+
+Trees can have zero or more child nodes
+
+A tree usually starts with a single root node or a parent node, and every
+child of the tree descends from this root node
+
+Every child of a node descends from only one parent.
+
+Leaf nodes are the nodes of the very end of a tree data structure.
+
