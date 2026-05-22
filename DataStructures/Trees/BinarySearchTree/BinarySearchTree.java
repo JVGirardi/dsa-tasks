@@ -53,34 +53,78 @@ public class BinarySearchTree {
     }
 
     public BinaryTreeNode remove(Integer element) {
-        BinaryTreeNode nodeAtual = this.mainNode;
-        if (nodeAtual == null) {
-            throw new IndexOutOfBoundsException("Empty");
-        }
         if (element == null) {
-            throw new RuntimeException("Forbidden remove null value");
+            throw new RuntimeException("Forbidden search null value");
         }
-        //cenário base onde elemento a remover é o mainNode
-        if (nodeAtual.getElement().equals(element)) {
-            BinaryTreeNode nodeRemover = nodeAtual;
-            if (nodeAtual.getRight() != null) {
-                nodeAtual = nodeAtual.getRight();
-                while (nodeAtual.getLeft() != null) {
-                    nodeAtual = nodeAtual.getLeft();
+        if (this.mainNode == null) {
+            throw new RuntimeException("Empty Tree");
+        }
+        BinaryTreeNode noAtual = mainNode;
+        BinaryTreeNode paiNoAtual = null;
+
+        while (noAtual != null) {
+            Integer elementoNoAtual = noAtual.getElement();
+            if (elementoNoAtual.equals(element)) {
+                break;
+            } else if (element > elementoNoAtual) {
+                paiNoAtual = noAtual;
+                noAtual = noAtual.getRight();
+            } else {
+                paiNoAtual = noAtual;
+                noAtual = noAtual.getLeft();
+            }
+        }
+
+        BinaryTreeNode noRemover = noAtual;
+        noAtual.setLeft(null);
+        noAtual.setRight(null);
+
+        //elemento nao encontrado
+        if (noRemover == null) {
+            return null;
+        }
+
+        //se nao tem pai é porque noAtual é mainNode
+        if (paiNoAtual == null) {
+            this.mainNode = null;
+            return noRemover;
+        }
+
+        //folha
+        if (noRemover.getRight() == null && noRemover.getLeft() == null) {
+            if (paiNoAtual.getLeft() == noRemover) {
+                paiNoAtual.setLeft(null);
+            } else {
+                paiNoAtual.setRight(null);
+            }
+            return noRemover;
+        }
+
+        //somente um filho
+        if ((noRemover.getLeft() != null && noRemover.getRight() == null) || (noRemover.getLeft() == null && noRemover.getRight() != null)) {
+            if (paiNoAtual.getRight() == noRemover) {
+                paiNoAtual.setRight(noRemover.getRight() != null ? noRemover.getRight() : noRemover.getLeft());
+            } else {
+                paiNoAtual.setLeft(noRemover.getRight() != null ? noRemover.getRight() : noRemover.getLeft());
+            }
+            return noRemover;
+        }
+        //dois filhhos
+        BinaryTreeNode noPaiSubstituir = noRemover.getRight();
+        Integer numeroRemover = noRemover.getElement();
+        if (noRemover.getLeft() != null) {
+            while (true) {
+                noRemover = noRemover.getLeft();
+                if (noRemover.getLeft() == null) {
+                    break;
                 }
             }
-
         }
 
 
-        while (true) {
-
-
-
-        }
-
-
+        return null;
     }
+
 
     @Override
     public String toString() {
