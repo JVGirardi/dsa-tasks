@@ -19,7 +19,7 @@ public class BinarySearchTreeTeste {
         bst.insert(15);
         bst.insert(170);
         System.out.println(bst.toString());
-        bst.remove(9);
+        bst.remove(20);
         System.out.println(bst.toString());
 
     }

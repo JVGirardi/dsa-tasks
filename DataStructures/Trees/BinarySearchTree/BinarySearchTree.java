@@ -1,7 +1,7 @@
 package Trees.BinarySearchTree;
 
 public class BinarySearchTree {
-    private BinaryTreeNode mainNode;
+    private BinaryTreeNode root;
 
     public BinarySearchTree() {
     }
@@ -10,7 +10,7 @@ public class BinarySearchTree {
         if (element == null) {
             throw new RuntimeException("Forbidden search null value");
         }
-        BinaryTreeNode noAtual = this.mainNode;
+        BinaryTreeNode noAtual = this.root;
         while (noAtual != null) {
             Integer elementoNoAtual = noAtual.getElement();
             if (elementoNoAtual.equals(element)) {
@@ -29,11 +29,11 @@ public class BinarySearchTree {
             throw new RuntimeException("Proibido inserir null");
         }
         BinaryTreeNode novoNo = new BinaryTreeNode(element);
-        if (this.mainNode == null) {
-            this.mainNode = novoNo;
+        if (this.root == null) {
+            this.root = novoNo;
             return;
         }
-        BinaryTreeNode currentNode = this.mainNode;
+        BinaryTreeNode currentNode = this.root;
         while (true) {
             Integer valorNoAtual = currentNode.getElement();
             if (element >= valorNoAtual) {
@@ -56,10 +56,10 @@ public class BinarySearchTree {
         if (element == null) {
             throw new RuntimeException("Forbidden search null value");
         }
-        if (this.mainNode == null) {
+        if (this.root == null) {
             throw new RuntimeException("Empty Tree");
         }
-        BinaryTreeNode noAtual = mainNode;
+        BinaryTreeNode noAtual = root;
         BinaryTreeNode paiNoAtual = null;
 
         while (noAtual != null) {
@@ -75,24 +75,18 @@ public class BinarySearchTree {
             }
         }
 
-        BinaryTreeNode noRemover = noAtual;
-        noAtual.setLeft(null);
-        noAtual.setRight(null);
-
         //elemento nao encontrado
-        if (noRemover == null) {
+        if (noAtual == null) {
             return null;
         }
 
-        //se nao tem pai é porque noAtual é mainNode
-        if (paiNoAtual == null) {
-            this.mainNode = null;
-            return noRemover;
-        }
+        BinaryTreeNode noRemover = noAtual;
 
         //folha
-        if (noRemover.getRight() == null && noRemover.getLeft() == null) {
-            if (paiNoAtual.getLeft() == noRemover) {
+        if (isFolha(noRemover)) {
+            if (paiNoAtual == null) {
+                this.root = null;
+            } else if (paiNoAtual.getLeft() == noRemover) {
                 paiNoAtual.setLeft(null);
             } else {
                 paiNoAtual.setRight(null);
@@ -101,37 +95,57 @@ public class BinarySearchTree {
         }
 
         //somente um filho
-        if ((noRemover.getLeft() != null && noRemover.getRight() == null) || (noRemover.getLeft() == null && noRemover.getRight() != null)) {
-            if (paiNoAtual.getRight() == noRemover) {
-                paiNoAtual.setRight(noRemover.getRight() != null ? noRemover.getRight() : noRemover.getLeft());
+        if (isFilhoUnico(noRemover)) {
+            BinaryTreeNode filhoUnico = (noRemover.getLeft() != null) ? noRemover.getLeft() : noRemover.getRight();
+
+            if (paiNoAtual == null) {
+                this.root = filhoUnico;
+            } else if (paiNoAtual.getRight() == noRemover) {
+                paiNoAtual.setRight(filhoUnico);
             } else {
-                paiNoAtual.setLeft(noRemover.getRight() != null ? noRemover.getRight() : noRemover.getLeft());
+                paiNoAtual.setLeft(filhoUnico);
             }
             return noRemover;
         }
-        //dois filhhos
-        BinaryTreeNode noPaiSubstituir = noRemover.getRight();
-        Integer numeroRemover = noRemover.getElement();
-        if (noRemover.getLeft() != null) {
-            while (true) {
-                noRemover = noRemover.getLeft();
-                if (noRemover.getLeft() == null) {
-                    break;
-                }
-            }
+
+        //dois filhos
+        BinaryTreeNode retornarNo = new BinaryTreeNode(noRemover.getElement());
+        BinaryTreeNode noSubstituirPai = noRemover;
+        BinaryTreeNode noSubstituir = noRemover.getRight();
+
+
+        while (noSubstituir.getLeft() != null) {
+            noSubstituirPai = noSubstituir;
+            noSubstituir = noSubstituir.getLeft();
         }
 
+        noRemover.setElement(noSubstituir.getElement());
 
-        return null;
+        //se cair neste if eh pq passou no loop
+        if (noSubstituirPai.getLeft() == noSubstituir) {
+            //vou setar o da direita do noSubstituir ao paiNoSubstituir pq left de substituir eh null
+            noSubstituirPai.setLeft(noSubstituir.getRight());
+        } else {
+            noSubstituirPai.setRight(noSubstituir.getRight());
+        }
+        return retornarNo;
+    }
+
+    private boolean isFilhoUnico(BinaryTreeNode noRemover) {
+        return noRemover.getRight() == null || noRemover.getLeft() == null;
+    }
+
+    private boolean isFolha(BinaryTreeNode noRemover) {
+        return noRemover.getRight() == null && noRemover.getLeft() == null;
     }
 
 
     @Override
     public String toString() {
-        if (this.mainNode == null) {
+        if (this.root == null) {
             return "Árvore vazia";
         }
-        return percorrerArvore(this.mainNode, 0);
+        return percorrerArvore(this.root, 0);
     }
 
     private String percorrerArvore(BinaryTreeNode node, int nivel) {
