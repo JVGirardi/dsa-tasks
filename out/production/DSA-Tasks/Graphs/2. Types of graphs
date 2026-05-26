@@ -1,0 +1,35 @@
+
+Directed & Undirected graphs
+
+    This types of graphs are good to describe traffic flows
+
+    Directed: you can only go on in one direction: one way street, you can only go one way.
+    Undirected: Both directions: like a highway between two cities where you can go back and forward
+
+    Facebook has a undirected graph
+    When i'm connected to a friend that friend is also connected to me.
+
+    Instagram is more directed
+    If i have my profile people can follow me and i can follow people
+    if someone follows me i don't automatically follow them.
+
+Weighted graphs & Unweighted graphs:
+
+    with graphs (weighted) you can also have informations in the edges (in the connections between the vertex/node)
+
+    maybe you are going into a trip and want to search the most efficient way to visit sites
+
+    Google Maps use a weighted graph to decide what's the shortest path for you to get there.
+
+    these sort of graphs are used a lot to calculate optimal paths.
+
+
+Cyclic and Acyclic graphs:
+
+    when you have vertices connected in a circular fashion, it's called cyclic,
+    when you can back to the original vertice.
+
+    Acyclic you cant do that.
+
+    Cyclic graphs are really common in weighted graphs (with values in the edges)
+    like google maps, most of the time there is a way to get back.
