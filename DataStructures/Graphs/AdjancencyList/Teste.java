@@ -1,32 +1,37 @@
 package Graphs.AdjancencyList;
 
 public class Teste {
-//    addVertex(0);
-//    addVertex(1);
-//    addVertex(2);
-//    addVertex(3);
-//    addVertex(4);
-//    addVertex(5);
-//    addVertex(6);
-//
-//    addEdge(3, 1);
-//    3, 4
-//            4, 2
-//            4, 5
-//            1, 2
-//            1, 0
-//            0, 2
-//            6, 5
+    static void main() {
+        Graph graph = new Graph();
 
-    //answer:
-    // 0 --> 1 2
-    // 1 --> 3 2 0
-    // 2 --> 4 1 0
-    // 3 --> 1 4
-    // 4 --> 3 2 5
-    // 5 --> 4 6
-    // 6 --> 5
+        Node zero = new Node(0);
+        Node um = new Node(1);
+        Node dois = new Node(2);
+        Node tres = new Node(3);
+        Node quatro = new Node(4);
+        Node cinco = new Node(5);
+        Node seis = new Node(6);
 
 
+        graph.addVertex(zero);
+        graph.addVertex(um);
+        graph.addVertex(dois);
+        graph.addVertex(tres);
+        graph.addVertex(quatro);
+        graph.addVertex(cinco);
+        graph.addVertex(seis);
+
+        graph.addEdge(tres, um);
+        graph.addEdge(tres, quatro);
+        graph.addEdge(quatro, dois);
+        graph.addEdge(quatro, cinco);
+        graph.addEdge(um, dois);
+        graph.addEdge(um, zero);
+        graph.addEdge(zero, dois);
+        graph.addEdge(seis, cinco);
+
+        System.out.println(graph.showConnections());
+
+    }
 
 }
