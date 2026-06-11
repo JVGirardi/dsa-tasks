@@ -4,10 +4,10 @@ import java.util.*;
 
 public class Graph {
     private int numberOfNodes = 0;
-    private Map<Node, LinkedList> adjacentList;
+    private Map<Node, LinkedList<Node>> adjacentList;
 
     public Graph() {
-        this.adjacentList = new HashMap<>();
+        this.adjacentList = new LinkedHashMap<>();
     }
 
     public void addVertex(Node node) {
@@ -33,12 +33,15 @@ public class Graph {
 
     public String showConnections() {
         StringBuilder sb = new StringBuilder();
-        for (Map.Entry<Node, LinkedList> entry : adjacentList.entrySet()) {
+        for (Map.Entry<Node, LinkedList<Node>> entry : adjacentList.entrySet()) {
             sb.append(entry.getKey() + "-->");
             if (entry.getValue() != null) {
-                sb.append(" ");
-                entry.getValue().forEach(valor -> sb.append(valor));
+                for (Node node : entry.getValue()) {
+                    sb.append(" ");
+                    sb.append(node);
+                }
             }
+            sb.append("\n");
         }
 
         return sb.toString();
