@@ -1,0 +1,19 @@
+Recursion isnt techcnically an algorithm
+it's more a concept that we use throw out some algorithms to write then better
+
+when we are getting to sorting and searching through a bst we are going to use recursion a lot
+
+what is recursion?
+
+if you are searching for a file in your computer
+you are opening folders recursively to search it
+
+ls
+ls -R (recursion)
+you computer will get through each folder and open it
+
+it's a function that refers to itself inside the function
+
+recursion is good for tasks that have repeated sub tasks to do
+
+
