@@ -1,3 +1,0 @@
-Why an unbalanced BST is bad?
-Because it can turns a O(log n) operation into an O(n) operation
-
