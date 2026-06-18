@@ -1,0 +1,25 @@
+Anything you do with a recursion CAN be done iteratively (loop)
+
+recursion allow your code to be more readable and simpler
+
+Recursion:
+
++ DRY -->
+
+DRY stands for "Don't Repeat Yourself". It is a core software development
+principle stating that every piece of knowledge or logic should have a single,
+authoritative representation within a system. The goal is to reduce repetition,
+making your code easier to maintain, test, and update.
+
++ Readability
+
+- Large Stack
+
+Every time you are using a tree or converting something
+into a tree, consider recursion.
+
+1. Divided into a number of subproblems that are smaller instances of the same problem.
+2. Each instance of the subproblem is identical in nature.
+3. The solution of each subproblem can be optimized to solve the problem at hand.
+
+Divide and Conquer using Recursion.
