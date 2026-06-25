@@ -24,12 +24,14 @@ public class InsertionSort {
 
     private static void insertionSortRef(int[] array) {
         for (int i = 1; i < array.length; i++) {
-            int j = i;
-            while (j > 0 && array[j-1] > array[j]) {
-                int temp = array[j];
-                array[j] = array[j-1];
-                array[j-1] = temp;
+            int chave = array[i];
+            int j = i - 1;
+
+            while (j >= 0 && array[j] > chave) {
+                array[j + 1] = array[j];
+                j--;
             }
+            array[j + 1] = chave;
         }
     }
 }

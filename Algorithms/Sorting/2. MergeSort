@@ -1,0 +1,30 @@
+usually done recursively
+divide & conquer
+
+steps of merge sort:
+
+you are going to continues split your ds in half
+the divide step.
+until we are left with individuals items.
+
+  28539417
+ 2853 9417
+28 53 94 17
+2 8 5 3 9 4 1 7
+
+our ds is broken down now into individual items.
+
+*when you implement it in code this steps are done in a different order, because of recursion,
+but this is a more human friendly order, provinding more clearaty in learning.
+
+
+now we exam the individuals items compare their values and merge them in a temporary array.
+
+2 8 5 3 9 4 1 7
+28 35 49 17
+the temporary arrays are sorted
+now let's jump on the recursion stack and continue
+we merge our smaller arrays into a large one inserting items in the correct order.
+2358 1479
+12345789
+
