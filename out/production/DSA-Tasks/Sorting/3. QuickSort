@@ -1,0 +1,13 @@
+time complexity O(n log n)
+worst case O(n^2)
+
+An element is in an sorted position if all the elements in the left hand side
+are smaller than the element selected and all the elements after this element are
+greater (in the right hand side)
+
+it works by divide & conquer strategie
+
+cada iteracao do quicksort tem o objetivo de dividir o array em dois e encontrar a
+posicao correta do pivo de modo q td esquerda seja menor q o pivo
+e toda direita seja maior q o pivo
+
