@@ -12,53 +12,52 @@ public class MergeSort2 {
     }
 
     public static void mergeSort2(int[] array) {
-        if (array.length < 2) {
-            return;
-        }
+       if (array.length <= 1) {
+           return;
+       }
 
-        int[] leftSide = new int[array.length/2];
-        int[] rightSide = new int[array.length-(array.length/2)];
+       int leftSize = array.length/2;
+       int[] leftArray = new int[leftSize];
+       int rightSize = array.length-leftSize;
+       int[] rightArray = new int[rightSize];
 
-        int i= 0;
-        while (i < leftSide.length) {
-            leftSide[i] = array[i];
-            i++;
-        }
-        int r = 0;
-        while (r < rightSide.length) {
-            rightSide[r] = array[i];
-            r++;
-            i++;
-        }
-
-        mergeSort2(leftSide);
-        mergeSort2(rightSide);
-        merge(leftSide, rightSide, array);
+       int i = 0;
+       while (i < leftArray.length) {
+           leftArray[i] = array[i];
+           i++;
+       }
+       int j = 0;
+       while (j < rightArray.length) {
+           rightArray[j] = array[i];
+           j++;
+           i++;
+       }
+       mergeSort2(leftArray);
+       mergeSort2(rightArray);
+       merge(leftArray, rightArray, array);
     }
 
-    public static void merge(int[] left, int[] right, int[] total) {
-        int i = 0, l = 0, r = 0;
+    public static void merge(int[] leftArray, int[] rightArray, int[] mainArray) {
 
-        while (l < left.length && r < right.length) {
-            if (left[l] < right[r]) {
-                total[i] = left[l];
-                l++;
+        int left =0, right = 0, i = 0;
+
+        while (left < leftArray.length && right < rightArray.length) {
+            if (leftArray[left] < rightArray[right]) {
+                mainArray[i++] = leftArray[left++];
             } else {
-                total[i] = right[r];
-                r++;
+                mainArray[i++] = rightArray[right++];
             }
-            i++;
         }
 
-        while (l < left.length) {
-            total[i] = left[l];
-            i++;
-            l++;
+        while (left < leftArray.length) {
+            mainArray[i++] = leftArray[left++];
         }
-        while (r < right.length) {
-            total[i] = right[r];
-            i++;
-            r++;
+
+        while (right < rightArray.length) {
+            mainArray[i++] = rightArray[right++];
         }
+
     }
+
+
 }

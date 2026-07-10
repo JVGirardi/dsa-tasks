@@ -1,0 +1,51 @@
+When should you use insertion sort?
+    Insertion sort should be used with only a few items
+    If your input is small or items are mostly sorted will be really fast.
+    Use little space & it's easy to implement in code.
+
+    Only few data & most sorted data = Insertion sort.
+
+Bubble Sort:
+    It's never good to use bubble sort, only really used for education proposes.
+    Very rare to see in real life.
+
+Selection sort:
+    Same thing as bubble sort.
+
+Merge Sort:
+    Really good because of divide & conquer
+    O(n log n)
+    if you feel worried about worst cases cenarious you should use merge sort.
+    if you wanna sort in memory on your machine and you are worried about
+    space complexity merge sort is gonna be really expensive.
+    space complexity --> O(n)
+
+Quick Sort:
+    Same speed of merge sort but less space complexity
+    O(n log(n))
+    if you are really worried about the worst case you should peak merge sort
+
+Merge sort & quick sort are the most used sorting algorithms in real life
+can we beat O(n log n)?  mathematically it's impossible to improve it.
+because o(n log n) means we have to sort by comparison
+all of the sorting algorithms above have to compare every number to each other.
+
+there is one exception for this rule:
+    you can improve it, if you dont make comparison.
+
+there is a small section of inputs that we can actually beat o(n log n):
+    Non-Comparison Sort:
+        Counting sort
+        Radix sort
+
+they are an entire different way to think about sorting, w comparison sort
+we decide the order of the numbers based on asking the question (is this bigger than another..)
+non comparison sorting use the way numbers and data are stored in our computer in binary.
+
+these types of algorithms only work w numbers (integers) in a restricted range
+if you have only numbers that you want sort and the range of this numbers go from like 0 - 1000000
+you cna use this specifically algorithms to make things faster
+
+it only work with numbers (integers) because the way they are stored in memory.
+
+merge sort & quick sort are universal sorting algorithms.

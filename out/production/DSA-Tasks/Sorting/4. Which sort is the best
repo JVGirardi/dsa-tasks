@@ -1,0 +1,3 @@
+When should you use insertion sort?
+    Insertion sort should be used with only a few items
+    If your input is small or items are mostly sorted will be really fast.
